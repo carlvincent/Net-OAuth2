@@ -6,6 +6,7 @@ __PACKAGE__->mk_accessors(qw/id secret user_agent site scope bearer_token_scheme
 use LWP::UserAgent;
 use URI;
 use Net::OAuth2::Profile::WebServer;
+use Net::OAuth2::Profile::Password;
 
 sub new {
 	my $class = shift;
@@ -23,6 +24,11 @@ sub new {
 sub web_server {
 	my $self = shift;
 	return Net::OAuth2::Profile::WebServer->new(client => $self, @_);
+}
+
+sub password {
+	my $self = shift;
+	return Net::OAuth2::Profile::Password->new(client => $self, @_);
 }
 
 sub request {
