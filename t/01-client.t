@@ -59,7 +59,7 @@ my %params = (
 );
 
 my @sites = keys %expected_result;
-my $tests = 1; # no warnings;
+my $tests = 0; # no warnings;
 foreach my $site_id (@sites) {
 	$tests += @{ $expected_result{$site_id}{authorize_url} } + @{ $expected_result{$site_id}{access_token_url} } + 3;
 }
