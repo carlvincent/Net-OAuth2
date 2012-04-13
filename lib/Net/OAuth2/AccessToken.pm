@@ -94,6 +94,10 @@ sub request {
 			uri_escape($query_param).'='.uri_escape($self->access_token)
 		);
 	}
+	
+	use Data::Dump qw(ddx);
+	ddx($request);
+	
 	my $r = $self->client->request($request);
 	die( $r->status_line()."\n".$r->decoded_content()."\n" ) unless $r->is_success;
 	return $r;
